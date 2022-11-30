@@ -5,6 +5,8 @@ import RegistrandoVenda.Produto;
 import RegistrandoVenda.Venda;
 import RegistrandoVenda.Vendedor;
 
+import javax.crypto.spec.PSource;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -34,43 +36,33 @@ public class Main {
 				      """);
 	};
 	public static void main(String[] args) {
-
+		int opcao = 0;
 		Scanner leitor = new Scanner(System.in);
 
-
-		int opcao = 0;
-		while (opcao != 9) {
-			System.out.println("\n\n");
+		do {
 			menu();
-			System.out.printf("\nDigite uma opção do menu: ");
-			opcao = leitor.nextInt();
-			System.out.println("\n");
-
-			switch (opcao) {
-				case 1: {
-					cadastrarVendedor.main();
-					break;
+			System.out.print("\nDigite uma opção do menu: ");
+			try {
+				opcao = leitor.nextInt();
+				if (opcao != 9){
+					switch (opcao) {
+						case 1 -> {cadastrarVendedor.main();
+						}
+						case 2 -> {cadastrarProduto.main();
+						}
+						case 3 -> {registrarVenda.main();
+						}
+						case 4 -> {registrarVenda.venda.imprimir();
+						}
+						default -> {System.out.println("Opção invalida!! Digite 1, 2, 3 ou 9 para encerrar.");}
+					}
 				}
-				case 2: {
-					cadastrarProduto.main();
-					break;
-				}
-				case 3: {
-					registrarVenda.main();
-					break;
-				}
-				case 4: {
-					registrarVenda.venda.imprimir();
-					break;
-				}
-				case 9: {
-					System.out.println("Programa encerrado!");
-					break;
-				}
-				default: {
-					System.out.println("Opção invalida!! Digite 1, 2, 3 ou 9 para encerrar.");
-				}
+			} catch (InputMismatchException e) {
+				System.out.println("\n\n");
+				System.out.println("Por favor, esse campo só aceita numeros!!");
+				System.out.println("\n\n");
+				leitor.nextLine();
 			}
-		}
+		} while (opcao != 9);
 	}
 }
