@@ -16,7 +16,7 @@ public class Main {
 				#                      Menu                        #
 				#                                                  #
 				#    Digite [1] para cadastrar um Vendedor         #
-				#    Digite [2] para registrar um produto          #
+				#    Digite [2] para cadastrar um produto          #
 				#    Digite [3] para registrar uma venda           #
 				#    Digite [4] para exibir o resumo da venda      #
 				#                                                  #           
@@ -61,6 +61,7 @@ public class Main {
 				}
 				case 4: {
 					registrarVenda.venda.imprimir();
+					break;
 				}
 				case 9: {
 					System.out.println("Programa encerrado!");

@@ -55,38 +55,34 @@ public class Venda {
     }
 
     public void calcular_valor() {
-        if ((cadastrarProduto.produto.getValorVenda() - desconto) < cadastrarProduto.produto.getValorCusto()) {
-            this.valor = cadastrarProduto.produto.getValorCusto() * quantidadeItens;
-        } else {
-            this.valor = (cadastrarProduto.produto.getValorVenda() - desconto) * this.quantidadeItens;
-        }
-
-    }
-
-    public void calcular_comissao() {
-        double comissao = this.valor * Vendedor.vendedor_percentual;
-
-        if (cadastrarProduto.produto.isPromocao()) {
-            cadastrarVendedor.vendedor.setComissao(comissao / 2);
-        } else {
-            cadastrarVendedor.vendedor.setComissao(comissao);
-        }
+        setValor(produto.getValorVenda() * quantidadeItens);
     }
 
     public void efetuar_desconto(double porcentagem_desconto) {
-            porcentagem_desconto = porcentagem_desconto / 100;
-            desconto = (cadastrarProduto.produto.getValorVenda() * porcentagem_desconto) * this.getQuantidadeItens();
+        porcentagem_desconto = porcentagem_desconto / 100;
+        desconto = (cadastrarProduto.produto.getValorVenda() * porcentagem_desconto) * this.getQuantidadeItens();
     }
 
+    public double calcular_comissao() {
+        double comissao = this.valor * (vendedor.getComissao() / 100);
+        if (produto.isPromocao()) {
+            vendedor.setComissao(comissao / 2);
+        } else {
+            vendedor.setComissao(comissao);
+        }
+        return comissao;
+    }
+
+
     public void imprimir() {
-        System.out.println("COD Vendedor: " + cadastrarVendedor.vendedor.getCodigo());
-        System.out.println("Vendedor: " + cadastrarVendedor.vendedor.getNome());
-        System.out.println("Comissão: " + cadastrarVendedor.vendedor.getComissao() + "%");
-        System.out.println("COD Produto: " + cadastrarProduto.produto.getCodigo());
-        System.out.println("Descrição Produto: " + cadastrarProduto.produto.getDescricao());
+        System.out.println("COD Vendedor: " + vendedor.getCodigo());
+        System.out.println("Vendedor: " + vendedor.getNome());
+        System.out.println("Comissão: R$ " + calcular_comissao());
+        System.out.println("COD Produto: " + produto.getCodigo());
+        System.out.println("Descrição Produto: " + produto.getDescricao());
         System.out.println("QTD Itens: " + quantidadeItens);
-        System.out.println("Valor Produto: R$ " + cadastrarProduto.produto.getValorVenda());
-        System.out.println("Valor da venda: R$ " + cadastrarProduto.produto.getValorVenda() * this.getQuantidadeItens());
+        System.out.println("Valor Produto: R$ " + produto.getValorVenda());
+        System.out.println("Valor da venda: R$ " + valor);
 
         if (cadastrarProduto.produto.isPromocao()) {
             System.out.println("Produto em promoção");
@@ -95,7 +91,7 @@ public class Venda {
         }
 
         System.out.println("Valor Desconto: R$ " + desconto);
-        System.out.println("Valor Total: R$ " + valor);
+        System.out.println("Valor Total: R$ " + (valor - desconto));
 
 
     }

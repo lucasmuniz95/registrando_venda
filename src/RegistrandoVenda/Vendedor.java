@@ -8,7 +8,6 @@ public class Vendedor {
     private int codigo;
     private double comissao;
     private String endereco;
-    public static double vendedor_percentual = 0.1;
 
     public Vendedor(String nome, int codigo, String endereco) {
         this.nome = nome;
