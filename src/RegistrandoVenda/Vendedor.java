@@ -1,5 +1,8 @@
 package RegistrandoVenda;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Vendedor {
     private String nome;
     private int codigo;
@@ -11,6 +14,9 @@ public class Vendedor {
         this.nome = nome;
         this.codigo = codigo;
         this.endereco = endereco;
+    }
+
+    public Vendedor() {
     }
 
     public String getNome() {
@@ -44,4 +50,5 @@ public class Vendedor {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
+    static ArrayList<Vendedor> vendedores = new ArrayList<Vendedor>();
 }

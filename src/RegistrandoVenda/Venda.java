@@ -1,8 +1,17 @@
 package RegistrandoVenda;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+import static RegistrandoVenda.Produto.produtos;
+
 public class Venda {
 
     private Produto produto;
+
+    public Venda() {
+    }
+
     private Vendedor vendedor;
     private double desconto;
     private int quantidadeItens;
@@ -53,7 +62,7 @@ public class Venda {
         if ((produto.getValorVenda() - desconto) < produto.getValorCusto()) {
             this.valor = produto.getValorCusto() * quantidadeItens;
         } else {
-            this.valor = (produto.getValorVenda() - desconto) * quantidadeItens;
+            this.valor = (produto.getValorVenda() - desconto) * this.quantidadeItens;
         }
 
     }
@@ -69,8 +78,8 @@ public class Venda {
     }
 
     public void efetuar_desconto(double porcentagem_desconto) {
-        porcentagem_desconto = porcentagem_desconto / 100;
-        this.desconto = (produto.getValorVenda() * porcentagem_desconto) * this.getQuantidadeItens();
+            porcentagem_desconto = porcentagem_desconto / 100;
+            desconto = (produto.getValorVenda() * porcentagem_desconto) * this.getQuantidadeItens();
     }
 
     public void imprimir() {
@@ -95,4 +104,6 @@ public class Venda {
         System.out.println();
 
     }
+
+    static ArrayList<Venda> vendas = new ArrayList<Venda>();
 }

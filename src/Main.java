@@ -1,36 +1,70 @@
-package RegistrandoVenda;
+import RegistrandoVenda.registrarVenda;
+import RegistrandoVenda.cadastrarVendedor;
+import RegistrandoVenda.cadastrarProduto;
+import RegistrandoVenda.Produto;
+import RegistrandoVenda.Venda;
+import RegistrandoVenda.Vendedor;
+
+import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
-        Produto produto_1 = new Produto(58, "Cerveja", 40, 15, false);
-        Vendedor vendedor_1 = new Vendedor("Alírio", 103, "Rua 1");
-        Venda venda1 = new Venda();
-        venda1.setProduto(produto_1);
-        venda1.setVendedor(vendedor_1);
-        venda1.setQuantidadeItens(2);
-        venda1.calcular_valor();
-        venda1.calcular_comissao();
-        venda1.imprimir();
+	public static void main(String[] args) {
+		System.out.println("""
+				 >>>>>>>>>>>>         Uniesp         >>>>>>>>>>>>>>
+				#              Centro Universitario                #
+				#                                                  #
+				#                      Menu                        #
+				#                                                  #
+				#    Digite [1] para cadastrar um Vendedor         #
+				#    Digite [2] para registrar um produto          #
+				#    Digite [3] para registrar uma venda           #
+				#    Digite [4] para exibir o resumo da venda      #
+				#                                                  #           
+				#         Se quiser encerrar o programa            #
+				#                                                  #                    
+				#                   [9] - Sair                     # 
+				#                                                  #
+				#    Grupo:                                        #
+				#    Gabriel Santana                               #
+				#    Marcio Alex                                   #
+				#    Antonio Brust                                 #
+				#    Arthur                                        # 
+				#    Lucas Muniz                                   # 
+				####################################################
+				      """);
+		Scanner leitor = new Scanner(System.in);
 
-        Produto produto_2 = new Produto(12, "Camisa", 100, 80, true);
-        Vendedor vendedor_2 = new Vendedor("Machado", 98, "Rua 2");
-        Venda venda2 = new Venda();
-        venda2.setProduto(produto_2);
-        venda2.setVendedor(vendedor_2);
-        venda2.setQuantidadeItens(3);
-        venda2.efetuar_desconto(10);
-        venda2.calcular_valor();
-        venda2.calcular_comissao();
-        venda2.imprimir();
 
-        Venda venda_3 = new Venda();
-        venda_3.setProduto(produto_2);
-        venda_3.setVendedor(vendedor_2);
-        venda_3.setQuantidadeItens(2);
-        venda_3.efetuar_desconto(30);
-        venda_3.calcular_valor();
-        venda_3.calcular_comissao();
-        venda_3.imprimir();
+		int opcao = 0;
+		while (opcao != 9) {
+			System.out.printf("\nDigite uma opção do menu: ");
+			opcao = leitor.nextInt();
 
-    }
+			switch (opcao) {
+				case 1: {
+					cadastrarVendedor.main();
+					break;
+				}
+				case 2: {
+					cadastrarProduto.main();
+					break;
+				}
+				case 3: {
+					System.out.println(registrarVenda.venda.getProduto());
+					registrarVenda.main();
+					break;
+				}
+				case 4: {
+					registrarVenda.venda.imprimir();
+				}
+				case 9: {
+					System.out.println("Programa encerrado!");
+					break;
+				}
+				default: {
+					System.out.println("Opção invalida!! Digite 1, 2, 3 ou 9 para encerrar.");
+				}
+			}
+		}
+	}
 }

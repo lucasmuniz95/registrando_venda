@@ -1,5 +1,7 @@
 package RegistrandoVenda;
 
+import java.util.ArrayList;
+
 public class Produto {
     private int codigo;
     private String descricao;
@@ -13,6 +15,9 @@ public class Produto {
         this.valorVenda = valorVenda;
         this.valorCusto = valorCusto;
         this.promocao = promocao;
+    }
+
+    public Produto() {
     }
 
     public int getCodigo() {
@@ -54,4 +59,6 @@ public class Produto {
     public void setValorCusto(float valorCusto) {
         this.valorCusto = valorCusto;
     }
+
+    static ArrayList<Produto> produtos = new ArrayList<Produto>();
 }
