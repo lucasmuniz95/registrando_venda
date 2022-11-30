@@ -50,5 +50,4 @@ public class Vendedor {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
-    static ArrayList<Vendedor> vendedores = new ArrayList<Vendedor>();
 }

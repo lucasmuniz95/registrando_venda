@@ -8,7 +8,7 @@ import RegistrandoVenda.Vendedor;
 import java.util.Scanner;
 
 public class Main {
-	public static void main(String[] args) {
+	public static void menu() {
 		System.out.println("""
 				 >>>>>>>>>>>>         Uniesp         >>>>>>>>>>>>>>
 				#              Centro Universitario                #
@@ -32,13 +32,19 @@ public class Main {
 				#    Lucas Muniz                                   # 
 				####################################################
 				      """);
+	};
+	public static void main(String[] args) {
+
 		Scanner leitor = new Scanner(System.in);
 
 
 		int opcao = 0;
 		while (opcao != 9) {
+			System.out.println("\n\n");
+			menu();
 			System.out.printf("\nDigite uma opção do menu: ");
 			opcao = leitor.nextInt();
+			System.out.println("\n");
 
 			switch (opcao) {
 				case 1: {
@@ -50,7 +56,6 @@ public class Main {
 					break;
 				}
 				case 3: {
-					System.out.println(registrarVenda.venda.getProduto());
 					registrarVenda.main();
 					break;
 				}

@@ -1,10 +1,12 @@
 package RegistrandoVenda;
 
 import static RegistrandoVenda.cadastrarVendedor.leitor;
+import static RegistrandoVenda.cadastrarVendedor.vendedor;
 
 public class cadastrarProduto {
     static Produto produto = new Produto();
     public static void main() {
+        System.out.println(vendedor.getNome());
         System.out.printf("Digite o codigo do produto: ");
         produto.setCodigo(leitor.nextInt());
         System.out.printf("Digite a descrição do produto: ");
@@ -22,6 +24,5 @@ public class cadastrarProduto {
             produto.setPromocao(false);
         }
         System.out.println("Produto cadastrado com sucesso!");
-        produto.produtos.add(produto);
     }
 }

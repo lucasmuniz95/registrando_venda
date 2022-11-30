@@ -16,7 +16,6 @@ public class cadastrarVendedor {
         System.out.printf("Comissão: ");
         vendedor.setComissao(leitor.nextDouble());
         System.out.println("\nVendedor cadastrado com sucesso!");
-        vendedor.vendedores.add(vendedor);
 
     }
 

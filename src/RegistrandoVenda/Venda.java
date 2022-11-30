@@ -1,9 +1,6 @@
 package RegistrandoVenda;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
-import static RegistrandoVenda.Produto.produtos;
+import static RegistrandoVenda.cadastrarProduto.produto;
 
 public class Venda {
 
@@ -53,16 +50,15 @@ public class Venda {
         return valor;
     }
 
-    public void setValor(Float valor) {
+    public void setValor(double valor) {
         this.valor = valor;
     }
 
     public void calcular_valor() {
-
-        if ((produto.getValorVenda() - desconto) < produto.getValorCusto()) {
-            this.valor = produto.getValorCusto() * quantidadeItens;
+        if ((cadastrarProduto.produto.getValorVenda() - desconto) < cadastrarProduto.produto.getValorCusto()) {
+            this.valor = cadastrarProduto.produto.getValorCusto() * quantidadeItens;
         } else {
-            this.valor = (produto.getValorVenda() - desconto) * this.quantidadeItens;
+            this.valor = (cadastrarProduto.produto.getValorVenda() - desconto) * this.quantidadeItens;
         }
 
     }
@@ -70,29 +66,29 @@ public class Venda {
     public void calcular_comissao() {
         double comissao = this.valor * Vendedor.vendedor_percentual;
 
-        if (getProduto().isPromocao()) {
-            this.vendedor.setComissao(comissao / 2);
+        if (cadastrarProduto.produto.isPromocao()) {
+            cadastrarVendedor.vendedor.setComissao(comissao / 2);
         } else {
-            this.vendedor.setComissao(comissao);
+            cadastrarVendedor.vendedor.setComissao(comissao);
         }
     }
 
     public void efetuar_desconto(double porcentagem_desconto) {
             porcentagem_desconto = porcentagem_desconto / 100;
-            desconto = (produto.getValorVenda() * porcentagem_desconto) * this.getQuantidadeItens();
+            desconto = (cadastrarProduto.produto.getValorVenda() * porcentagem_desconto) * this.getQuantidadeItens();
     }
 
     public void imprimir() {
-        System.out.println("COD Vendedor: " + vendedor.getCodigo());
-        System.out.println("Vendedor: " + vendedor.getNome());
-        System.out.println("Comissão: " + vendedor.getComissao() + "%");
-        System.out.println("COD Produto: " + produto.getCodigo());
-        System.out.println("Descrição Produto: " + produto.getDescricao());
+        System.out.println("COD Vendedor: " + cadastrarVendedor.vendedor.getCodigo());
+        System.out.println("Vendedor: " + cadastrarVendedor.vendedor.getNome());
+        System.out.println("Comissão: " + cadastrarVendedor.vendedor.getComissao() + "%");
+        System.out.println("COD Produto: " + cadastrarProduto.produto.getCodigo());
+        System.out.println("Descrição Produto: " + cadastrarProduto.produto.getDescricao());
         System.out.println("QTD Itens: " + quantidadeItens);
-        System.out.println("Valor Produto: R$ " + produto.getValorVenda());
-        System.out.println("Valor da venda: R$ " + produto.getValorVenda() * this.getQuantidadeItens());
+        System.out.println("Valor Produto: R$ " + cadastrarProduto.produto.getValorVenda());
+        System.out.println("Valor da venda: R$ " + cadastrarProduto.produto.getValorVenda() * this.getQuantidadeItens());
 
-        if (produto.isPromocao()) {
+        if (cadastrarProduto.produto.isPromocao()) {
             System.out.println("Produto em promoção");
         } else {
             System.out.println("Produto não está na promoção");
@@ -101,9 +97,6 @@ public class Venda {
         System.out.println("Valor Desconto: R$ " + desconto);
         System.out.println("Valor Total: R$ " + valor);
 
-        System.out.println();
 
     }
-
-    static ArrayList<Venda> vendas = new ArrayList<Venda>();
 }
