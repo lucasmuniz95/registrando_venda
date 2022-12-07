@@ -77,7 +77,7 @@ public class Venda {
     public void imprimir() {
         System.out.println("COD Vendedor: " + vendedor.getCodigo());
         System.out.println("Vendedor: " + vendedor.getNome());
-        System.out.println("Comissão: R$ " + calcular_comissao());
+        System.out.println("Comissão: R$ " + vendedor.getComissao());
         System.out.println("COD Produto: " + produto.getCodigo());
         System.out.println("Descrição Produto: " + produto.getDescricao());
         System.out.println("QTD Itens: " + quantidadeItens);

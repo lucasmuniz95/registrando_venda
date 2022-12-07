@@ -30,7 +30,7 @@ public class Main {
 				#    Gabriel Santana                               #
 				#    Marcio Alex                                   #
 				#    Antonio Brust                                 #
-				#    Arthur                                        # 
+				#    Arthur Ramalho                                # 
 				#    Lucas Muniz                                   # 
 				####################################################
 				      """);
@@ -52,17 +52,28 @@ public class Main {
 						}
 						case 3 -> {registrarVenda.main();
 						}
-						case 4 -> {registrarVenda.venda.imprimir();
+						case 4 -> {
+							if (registrarVenda.venda == null){
+								System.out.println("Primeiro vc tem que registrar a venda");
+							} else {
+								registrarVenda.venda.imprimir();
+							}
 						}
-						default -> {System.out.println("Opção invalida!! Digite 1, 2, 3 ou 9 para encerrar.");}
+						default -> {
+							System.out.println("Opção invalida!! Digite 1, 2, 3 ou 9 para encerrar.");}
 					}
 				}
 			} catch (InputMismatchException e) {
 				System.out.println("\n\n");
 				System.out.println("Por favor, esse campo só aceita numeros!!");
 				System.out.println("\n\n");
-				leitor.nextLine();
 			}
 		} while (opcao != 9);
 	}
+	static void clearBuffer(Scanner scanner) {
+		if (scanner.hasNextLine()) {
+			scanner.nextLine();
+		}
+	}
 }
+

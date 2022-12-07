@@ -1,7 +1,5 @@
 package RegistrandoVenda;
 
-import java.util.ArrayList;
-
 public class Produto {
     private int codigo;
     private String descricao;

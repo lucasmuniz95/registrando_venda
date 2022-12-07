@@ -1,7 +1,5 @@
 package RegistrandoVenda;
 
-import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Vendedor {
     private String nome;
